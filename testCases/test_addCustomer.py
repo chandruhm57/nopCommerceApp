@@ -1,13 +1,15 @@
 import random
 import string
 import pytest
-from selenium import webdriver
+import allure
+from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 from pageObjects.AddCustomersPage import AddCustomers
 from pageObjects.LoginPage import LoginPage
 from utilities.customLogger import Loggen
 from utilities.readProperties import ReadConfig
 
+@allure.severity(allure.severity_level.CRITICAL)
 class Test_003_AddCustomer:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
@@ -15,6 +17,7 @@ class Test_003_AddCustomer:
     logger = Loggen.loggen()
 
     @pytest.mark.sanity
+    @allure.severity(allure.severity_level.CRITICAL)
     def test_addCustomer(self,setup):
         self.logger.info("********** Test_003_AddCustomer ************")
         self.driver=setup
@@ -56,7 +59,9 @@ class Test_003_AddCustomer:
             assert True==True
             self.logger.info("********* Add Customer Test Passed **********")
         else:
-            self.driver.save_screenshot(".\\ScreenShots\\"+"test_addcustomer_scr.png") #screenshot
+            allure.attach(self.driver.get_screenshot_as_png(),name="test_addcustomer_scr.png",
+                                   attachment_type=AttachmentType.PNG)
+            #self.driver.save_screenshot(".\\ScreenShots\\"+"test_addcustomer_scr.png") #screenshot
             self.logger.info("********* Add Customer Test Failed **********")
             assert True==False
 

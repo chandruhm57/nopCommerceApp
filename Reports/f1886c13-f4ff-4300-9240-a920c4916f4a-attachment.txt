@@ -1,0 +1,2 @@
+[32mINFO    [0m Test_001_Login:test_login.py:40 *************************Varifyig Login*******************************
+[32mINFO    [0m Test_001_Login:test_login.py:51 **************************Login test is passed******************************

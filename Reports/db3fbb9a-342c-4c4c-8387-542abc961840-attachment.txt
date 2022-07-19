@@ -1,0 +1,3 @@
+[32mINFO    [0m Test_004_SearchCustomer:test_searchCustomer.py:20 *********** Verify search Customer by Email ***********
+[32mINFO    [0m Test_004_SearchCustomer:test_searchCustomer.py:29 ********** Login successful **********
+[32mINFO    [0m Test_004_SearchCustomer:test_searchCustomer.py:31 ********* Start Search Customer By Email *********

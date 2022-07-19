@@ -5,13 +5,16 @@ from pageObjects.AddCustomersPage import AddCustomers
 from pageObjects.SearchCustomerPage import SearchCustomer
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import Loggen
+import allure
 
+@allure.severity(allure.severity_level.NORMAL)
 class Test_004_SearchCustomer:
     baseURL=ReadConfig.getApplicationURL()
     username=ReadConfig.getUseremail()
     password=ReadConfig.getPassword()
     logger=Loggen.loggen()
 
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.regression
     def test_saerchCustomerByEmail(self,setup):
         self.logger.info("*********** Verify search Customer by Email ***********")
@@ -41,6 +44,7 @@ class Test_004_SearchCustomer:
         self.logger.info("*******Completed TC_LoginDDT_002*******")
         self.driver.close()
 
+    @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.regression
     def test_saerchCustomerByName(self,setup):
         self.logger.info("*********** Verify search Customer by Name ***********")

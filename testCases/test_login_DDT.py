@@ -1,16 +1,18 @@
 import pytest
-from selenium import webdriver
+import allure
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import Loggen
 from utilities import XLUtils
 import time
 
+@allure.severity(allure.severity_level.MINOR)
 class Test_002_DDT_Login:
     baseURL = ReadConfig.getApplicationURL()
     path=".//TestData//LoginData.xlsx"
     logger=Loggen.loggen()
 
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.regression
     def test_login(self,setup):
         self.logger.info("************************Test_002_DDT_Login*****************************")

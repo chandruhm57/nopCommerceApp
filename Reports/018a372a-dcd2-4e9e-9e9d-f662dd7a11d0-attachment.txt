@@ -1,0 +1,3 @@
+[32mINFO    [0m Test_001_Login:test_login.py:19 *********************** Test 001 Login ******************************
+[32mINFO    [0m Test_001_Login:test_login.py:20 *******************Varifyig Home Page Tittle*************************
+[32mINFO    [0m Test_001_Login:test_login.py:27 *******************Home page title test is passed*************************

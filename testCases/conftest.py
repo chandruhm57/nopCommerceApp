@@ -1,24 +1,33 @@
 from selenium import webdriver
 import pytest
-from selenium.webdriver.chrome.service import Service
-
 
 @pytest.fixture()
 def setup(browser):
     if browser=='chrome':
         from selenium.webdriver.chrome.service import Service
         serv_obj=Service("C:\\Drivers\\chromedriver.exe")
-        driver=webdriver.Chrome(service=serv_obj)
+        ops=webdriver.ChromeOptions()
+        ops.headless=True
+        driver=webdriver.Chrome(service=serv_obj,options=ops)
         #driver=webdriver.Chrome(executable_path="C:\\Drivers\\chromedriver.exe")
     elif browser=='firefox':
         from selenium.webdriver.firefox.service import Service
-        serv_obj = Service("C:\\Drivers\\chromedriver.exe")
-        driver = webdriver.Chrome(service=serv_obj)
-        #driver=webdriver.Firefox(executable_path="C:\\Drivers\\geckodriver.exe")
+        serv_obj = Service("C:\Drivers\geckodriver.exe")
+        ops = webdriver.FirefoxOptions()
+        ops.headless = True
+        driver = webdriver.Firefox(service=serv_obj, options=ops)
+    elif browser=='edge':
+        from selenium.webdriver.edge.service import Service
+        serv_obj = Service("C:\Drivers\msedgedriver.exe")
+        ops = webdriver.EdgeOptions()
+        ops.headless = True
+        driver = webdriver.Edge(service=serv_obj, options=ops)
     else:
         from selenium.webdriver.chrome.service import Service
-        serv_obj=Service("C:\\Drivers\\chromedriver.exe")
-        driver=webdriver.Chrome(service=serv_obj)
+        serv_obj = Service("C:\\Drivers\\chromedriver.exe")
+        ops = webdriver.ChromeOptions()
+        ops.headless = True
+        driver = webdriver.Chrome(service=serv_obj, options=ops)
         #driver=webdriver.Chrome(executable_path="C:\\Drivers\\chromedriver.exe")
     return driver
 

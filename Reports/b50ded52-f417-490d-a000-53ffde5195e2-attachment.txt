@@ -1,0 +1,3 @@
+[32mINFO    [0m Test_003_AddCustomer:test_addCustomer.py:22 ********** Test_003_AddCustomer ************
+[32mINFO    [0m Test_003_AddCustomer:test_addCustomer.py:31 ********** Login successful **************
+[32mINFO    [0m Test_003_AddCustomer:test_addCustomer.py:32 ********** Starting AddCustomer Test *************

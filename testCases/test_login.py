@@ -1,9 +1,11 @@
 import pytest
-from selenium import webdriver
+from allure_commons.types import AttachmentType
 from pageObjects.LoginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import Loggen
+import allure
 
+@allure.severity(allure.severity_level.CRITICAL)
 class Test_001_Login:
     baseURL = ReadConfig.getApplicationURL()
     useremail = ReadConfig.getUseremail()
@@ -11,6 +13,7 @@ class Test_001_Login:
 
     logger=Loggen.loggen()
 
+    @allure.severity(allure.severity_level.MINOR)
     @pytest.mark.regression
     def test_homePage_title(self,setup):
         self.logger.info("*********************** Test 001 Login ******************************")
@@ -23,11 +26,14 @@ class Test_001_Login:
             self.driver.close()
             self.logger.info("*******************Home page title test is passed*************************")
         else:
-            self.driver.save_screenshot(".\\ScreenShots\\" + "test_homePage_title.png")
+            allure.attach(self.driver.get_screenshot_as_png(),name="test_homePage_title.png",
+                          attachment_type=AttachmentType.PNG)
+            #self.driver.save_screenshot(".\\ScreenShots\\" + "test_homePage_title.png")
             self.driver.close()
             self.logger.error("*******************Home page title test is failed*************************")
             assert False
 
+    @allure.severity(allure.severity_level.CRITICAL)
     @pytest.mark.sanity
     @pytest.mark.regression
     def test_login(self,setup):
@@ -45,7 +51,9 @@ class Test_001_Login:
             self.logger.info("**************************Login test is passed******************************")
 
         else:
-            self.driver.save_screenshot(".\\ScreenShots\\" + "test_login.png")
+            allure.attach(self.driver.get_screenshot_as_png(),name="test_login.png",
+                          attachment_type=AttachmentType.PNG)
+            #self.driver.save_screenshot(".\\ScreenShots\\" + "test_login.png")
             self.driver.close()
             self.logger.error("**************************Login test is failed*****************************")
             assert False
